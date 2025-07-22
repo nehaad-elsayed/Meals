@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/all.min.css" />
+    <link rel="stylesheet" href="./css/bootstrap.min.css" />
+    <link rel="stylesheet" href="./css/master.css" />
+    <title>Meals</title>
+  </head>
+  <body class="bg-dark">
+    
+    <main>
+      <section class="meals">
+          <div class="container overflow-hidden ">
+                <p id="invalidData" class=" text-center my-4 alert alert-success d-none w-75 mx-auto text-danger">Invalid Data !!</p>
+                <p class="bg-light mt-2 text-lg p-2 rounded-1 font-monospace fa-bold"> Seacrh about any of these ingrediants chicken /beef/ salmon/ pasta /rice /cheese/ egg /potato /tomato/ onion /garlic/ milk /shrimp /lamb/ mushroom / carrot </p>
+                <div class="d-flex  mt-2 align-items-center justify-content-center">
+                    <input id="searchInput" type="search" class="form-control w-50 me-2">
+                    <button id="btnSearch" class="btn btn-success">Search</button>
+                </div>
+                <div class="row g-4 my-3" id="rowData">
+                  <div class="col-md-3">
+                        <div class="card h-100">
+                            <img height="200px" class="card-img-top w-100 d-block" src="./imgs/Typing.jpg" alt=""/>
+                            <div class="card-body text-center">
+                                <h4 class="card-title">meal</h4>
+                                <button data-bs-toggle="modal" data-bs-target="#exampleModal" class="w-100 btn btn-outline-success mt-2">Show details</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+    <div class="loading d-none">
+            <span class="loader"></span>
+        </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2 class="modal-title text-success fs-5" id="exampleModalLabel">Recipe details</h2>
+                        <button type="button" class="btn-close btn-outline-success" data-bs-dismiss="modal"
+                            aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body" id="bodyData">
+                      <img src="./imgs/Typing.jpg" alt=""/>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-success" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+      </section>
+    </main>
+    <script src="./js/bootstrap.bundle.min.js"></script>
+    <script src="./js/index.js"></script>
+  </body>
+</html>
