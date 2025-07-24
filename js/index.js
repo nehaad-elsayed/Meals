@@ -13,7 +13,6 @@ const loading = document.querySelector(".loading");
 // const api_ForMealDetails = "https://www.themealdb.com/api/json/v1/1/lookup.php?i='1537'"
 let meals = [];
 
-
 getMeals();
 
 //&&&&&&&&& eventssssss
@@ -23,10 +22,12 @@ getMeals();
 // })
 
 searchInput.addEventListener("keydown", (e) => {
-  if (e.key == "Enter") getMeals(searchInput.value);
+  if (e.key == "Enter" && searchInput.value.trim().length > 0)
+    getMeals(searchInput.value);
 });
 searchBtn.addEventListener("click", () => {
-  getMeals(searchInput.value);
+  if (searchInput.value.trim().length > 0) getMeals(searchInput.value);
+  searchInput.value = "";
 });
 
 //&&&&&&&&&&&&&& functionssssssss
@@ -47,9 +48,6 @@ async function getMeals(meal = "chicken") {
     loading.classList.add("d-none");
   }
 }
-
-
-
 
 // function displayMeals(arr) {
 //   let box = "";
@@ -76,12 +74,7 @@ async function getMeals(meal = "chicken") {
 //   rowData.innerHTML = box;
 // }
 
-
-
-
-//&& 3shan bst5dm bundler elprev solution XXX 
-
-
+//&& 3shan bst5dm bundler elprev solution XXX
 
 function displayMeals(arr) {
   let box = "";
@@ -90,9 +83,13 @@ function displayMeals(arr) {
     box += `
       <div class=" col-12 col-md-6 col-lg-3">
         <div class="card h-100">
-          <img height="200px" class="card-img-top w-100 d-block" src="${arr[i].strMealThumb}" alt=""/>
+          <img height="200px" class="card-img-top w-100 d-block" src="${
+            arr[i].strMealThumb
+          }" alt=""/>
           <div class="card-body text-center">
-            <h2 class="card-title">${arr[i].strMeal.split(" ", 2).join(" ")}</h2>
+            <h2 class="card-title">${arr[i].strMeal
+              .split(" ", 2)
+              .join(" ")}</h2>
             <button 
               data-bs-toggle="modal" 
               data-bs-target="#exampleModal" 
@@ -115,8 +112,6 @@ function displayMeals(arr) {
     });
   });
 }
-
-
 
 async function showDetails(id) {
   const response = await fetch(
