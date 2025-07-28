@@ -27,7 +27,6 @@ searchInput.addEventListener("keydown", (e) => {
 });
 searchBtn.addEventListener("click", () => {
   if (searchInput.value.trim().length > 0) getMeals(searchInput.value);
-  searchInput.value = "";
 });
 
 //&&&&&&&&&&&&&& functionssssssss
@@ -42,6 +41,7 @@ async function getMeals(meal = "chicken") {
     console.log(data.meals);
     meals = data.meals;
     displayMeals(meals);
+    searchInput.value = "";
   } catch (error) {
     toastr.error(`invalid ingradient <i class="fa-solid fa-face-tired"></i>`);
   } finally {
@@ -124,6 +124,7 @@ async function showDetails(id) {
   let img = document.createElement("img");
   let h3 = document.createElement("h3");
   let ancor = document.createElement("a");
+  let p = document.createElement("p");
   img.setAttribute("src", `${data.meals[0].strMealThumb}`);
   img.setAttribute("alt", `${data.meals[0].strMeal}`);
   img.style.cssText = `
@@ -136,7 +137,14 @@ border-radius:10px;
   ancor.setAttribute("href", `${data.meals[0].strYoutube}`);
   ancor.setAttribute("target", "_blank");
   ancor.textContent = "Reciepe on Youtube";
+  p.textContent = `Meal Area : ${data.meals[0].strArea}`;
+  p.style.cssText = `
+  font-size:1.5rem;
+ 
+  `;
+  p.classList.add("text-success", "my-2");
   modalBody.appendChild(img);
   modalBody.appendChild(h3);
+  modalBody.appendChild(p);
   modalBody.appendChild(ancor);
 }
