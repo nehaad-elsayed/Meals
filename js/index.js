@@ -22,11 +22,20 @@ getMeals();
 // })
 
 searchInput.addEventListener("keydown", (e) => {
-  if (e.key == "Enter" && searchInput.value.trim().length > 0)
+  if (e.key == "Enter" && searchInput.value.trim().length === 0) {
+    toastr.error(" please enter an ingrediant");
+    return;          // 3shan mb3tsh req malosh lazma
+  }
+  else if (e.key == "Enter" && searchInput.value.trim().length > 0)
     getMeals(searchInput.value);
 });
 searchBtn.addEventListener("click", () => {
-  if (searchInput.value.trim().length > 0) getMeals(searchInput.value);
+
+  if (searchInput.value.trim().length === 0) {
+    toastr.error(" please enter an ingrediant");
+    return; // 3shan mb3tsh req malosh lazma
+  }
+  else if (searchInput.value.trim().length > 0) getMeals(searchInput.value);
 });
 
 //&&&&&&&&&&&&&& functionssssssss
@@ -114,9 +123,7 @@ function displayMeals(arr) {
 }
 
 async function showDetails(id) {
-  const response = await fetch(
-    `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`
-  );
+  const response = await fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`);
   const data = await response.json();
   console.log(data.meals[0]); //3shan elresponse gay array feeha one obj
   const modalBody = document.getElementById("modalBodyData");
